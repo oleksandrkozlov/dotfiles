@@ -1,0 +1,27 @@
+line_width = 100
+tab_size = 4
+max_subargs_per_line = 1
+separate_ctrl_name_with_space = True
+separate_fn_name_with_space = True
+dangle_parens = True
+bullet_char = u'*'
+enum_char = u'.'
+line_ending = u'unix'
+command_case = u'lower'
+keyword_case = u'unchanged'
+additional_commands = {
+  "pkg_find": {
+    "kwargs": {
+      "PKG": "*"
+    }
+  }
+}
+always_wrap = []
+algorithm_order = [0, 1, 2, 3]
+enable_markup = True
+first_comment_is_literal = False
+literal_comment_pattern = None
+fence_pattern = u'^\\s*([`~]{3}[`~]*)(.*)$'
+ruler_pattern = u'^\\s*[^\\w\\s]{3}.*[^\\w\\s]{3}$'
+emit_byteorder_mark = False
+per_command = {}

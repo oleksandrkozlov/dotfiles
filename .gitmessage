@@ -1,0 +1,31 @@
+
+# tag: (this commit will) <title in imperative>
+#
+# An awesome description of WHY you did this work, not HOW/WHAT it does.
+# The diff attached to commit should describe implementation (HOW)
+# well-enough.
+#
+#------------------------------------------------^---------------------^
+#                                              50^                   72^
+# Tag can be
+#   * component, utils, tests;
+#   * git (git related modifications);
+#   * repo (project structure modification);
+#   * build (project build system modification);
+#   * style (code style fixed);
+#   * proj (other changes related to the project).
+#
+# Remember to:
+#   * sign a commit;
+#   * separate subject from body with a blank line;
+#   * limit the subject line to 50 characters;
+#   * capitalize the subject line;
+#   * do not end the subject line with a period;
+#   * use the imperative mood in the subject line;
+#   * wrap the body at 72 characters;
+#   * use the body to explain what and why vs. how.
+#
+# For more tips:
+#    http://chris.beams.io/posts/git-commit
+#    https://github.com/erlang/otp/wiki/writing-good-commit-messages#do
+#    https://www.conventionalcommits.org

@@ -1,0 +1,45 @@
+Diagnostics:
+  ClangTidy:
+    Add:
+      - abseil*
+      - altera*
+      - android*
+      - boost*
+      - bugprone*
+      - cert*
+      - clang-analyzer*
+      - clang-diagnostic*
+      - concurrency*
+      - cppcoreguidelines*
+      - darwin*
+      - fuchsia*
+      - google*
+      - hicpp*
+      - linuxkernel*
+      - llvm*
+      - llvmlibc*
+      - misc*
+      - modernize*
+      - mpi*
+      - objc*
+      - openmp*
+      - performance*
+      - portability*
+      - readability*
+    Remove:
+      - altera-struct-pack-align
+      - altera-unroll-loops
+      - bugprone-easily-swappable-parameters
+      - cppcoreguidelines-avoid-const-or-ref-data-members
+      - cppcoreguidelines-pro-type-union-access
+      - fuchsia-default-arguments-calls
+      - fuchsia-trailing-return
+      - hicpp-no-assembler
+      - llvm-qualified-auto
+      - llvmlibc-callee-namespace
+      - llvmlibc-implementation-in-namespace
+      - llvmlibc-restrict-system-libc-headers
+      - modernize-use-trailing-return-type
+      - readability-identifier-length
+      - readability-qualified-auto
+      - unused-includes
