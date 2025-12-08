@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+STATUS_OUTPUT=$(nordvpn status)
+
+STATUS=$(echo "$STATUS_OUTPUT" | grep "^Status:" | awk '{print $2}')
+
+if [[ "$STATUS" == "Connected" ]]; then
+    COUNTRY=$(echo "$STATUS_OUTPUT" | grep "^Country:" | cut -d' ' -f2-)
+    CITY=$(echo "$STATUS_OUTPUT" | grep "^City:" | cut -d' ' -f2-)
+    TECH=$(echo "$STATUS_OUTPUT" | grep "^Current technology:" | cut -d' ' -f3-)
+
+    echo "🔒 $COUNTRY ($CITY)"
+    echo "🔒 $COUNTRY"
+    echo "#50fa7b"
+else
+    echo "❌ Disconnected"
+    echo "❌"
+    echo "#ff5555"
+fi

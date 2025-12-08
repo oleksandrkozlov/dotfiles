@@ -82,6 +82,11 @@ command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 #
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
+[nordvpn]
+command=~/.config/i3blocks/nordvpn
+interval=10
+label=
+
 [iface]
 IFACE=wlp4s0
 color=#00FF00
