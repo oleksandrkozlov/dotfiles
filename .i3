@@ -13,11 +13,16 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 9
+# font pango:monospace 9
+font pango:JetBrainsMono Nerd Font 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# font pango:JetBrainsMono Nerd Font 8
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+# exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -28,7 +33,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 exec --no-startup-id xsettingsd
 
 # Use pactl to adjust volume in PulseAudio.
@@ -41,6 +46,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
+
 # start a terminal
 bindsym $mod+Return exec kitty
 
@@ -51,12 +60,13 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x exec i3lock
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id rofi -show drun
+# A more modern dmenu replacement is rofi:
+# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# There also is i3-dmenu-desktop which only displays applications shipping a
+# .desktop file. It is a wrapper around dmenu, so you need that installed.
+# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -112,10 +122,10 @@ bindsym $mod+Tab workspace back_and_forth
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
+set $ws1 "1  "
+set $ws2 "2  "
+set $ws3 "3  "
+set $ws4 "4  "
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -184,9 +194,10 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        #status_command i3status
-        status_command ~/Work/workspace/scripts/my_i3status.sh
+        status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
+        font pango:JetBrainsMono Nerd Font 11.8
         colors {
+
           background #282A36
           statusline #F8F8F2
           separator  #44475A
@@ -207,19 +218,17 @@ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
-exec xset r rate 200 60 # Set initial delay 200ms, repeat 60ms
-exec xset s off
-exec xset -dpms
-exec xset s noblank
-exec xrandr --output DP-0 --mode 3440x1440 --rate 144
-
-#exec --no-startup-id xset r rate 200 60 # Set initial delay 300ms, repeat 35ms
+exec --no-startup-id xset r rate 200 60   # key repeat
+exec --no-startup-id xset s off           # disable screen saver
+exec --no-startup-id xset -dpms           # disable DPMS (energy saving)
+exec --no-startup-id xset s noblank       # no blanking
+exec --no-startup-id xrandr --output DP-0 --mode 3440x1440 --rate 143.97
 
 # wallpaper
-exec_always feh --bg-scale /home/olkozlo/Work/workspace/wallpapers/rox2fui0i6xd1.png
+exec_always feh --bg-scale /home/olkozlo/Work/dracula/wallpapers/rox2fui0i6xd1.png
 
-exec_always kitty
-exec_always brave-browser
+# exec_always kitty
+# exec_always brave
 
 assign [class="kitty"] $ws1
 assign [class="Brave-browser"] $ws2

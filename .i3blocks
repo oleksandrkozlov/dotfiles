@@ -32,7 +32,7 @@ markup=none
 # Weatehr
 
 [weather]
-command=curl -Ss 'wttr.in/berlin?format=%c%C+%t+(%f)+%w+%m+%S+-%s' | xargs echo
+command=curl -Ss 'wttr.in/berlin?format=%c%C+%t+(%f)+%w+%m+%S-%s' | xargs echo
 interval=600
 
 #[weather]
@@ -44,11 +44,13 @@ interval=600
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-separator=false
+label= 
+separator=true
 interval=30
 command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 
 [memory]
+label= 
 instance=swap
 separator=true
 interval=30
@@ -59,10 +61,13 @@ command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-label=cpu: 
+label= 
 interval=10
 command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 separator=true
+COLOR_NORMAL=#50fa7b
+COLOR_WARN=#f1fa8c
+COLOR_CRIT=#ff5555
 
 [load_average]
 label=LOAD
@@ -74,6 +79,7 @@ interval=10
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
+label= 
 DIR=/
 interval=30
 command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
@@ -88,8 +94,9 @@ interval=10
 label=
 
 [iface]
-IFACE=wlp4s0
-color=#00FF00
+label=󰍸
+IFACE=enp3s0
+# color=#50fa7b
 interval=10
 separator=false
 command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
@@ -112,7 +119,7 @@ interval=5
 #label=BAT
 label=⚡
 interval=30
-command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
+#command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 
 # Volume indicator
 #
@@ -121,8 +128,8 @@ command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 # See the script for details.
 
 [volume]
-label=♪
-STEP=5%
+label=♪ 
+STEP=%
 interval=once
 signal=10
 command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
@@ -130,6 +137,7 @@ command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 # Date Time
 #
 [time]
+label= 
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=5
 
