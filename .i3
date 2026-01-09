@@ -14,7 +14,7 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 9
-font pango:JetBrainsMono Nerd Font 9
+font pango:JetBrains Mono 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -195,7 +195,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
-        font pango:JetBrainsMono Nerd Font 11.8
+        font pango:JetBrains Mono 10
         colors {
 
           background #282A36
@@ -218,11 +218,12 @@ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
-exec --no-startup-id xset r rate 200 60   # key repeat
-exec --no-startup-id xset s off           # disable screen saver
-exec --no-startup-id xset -dpms           # disable DPMS (energy saving)
-exec --no-startup-id xset s noblank       # no blanking
-exec --no-startup-id xrandr --output DP-0 --mode 3440x1440 --rate 143.97
+exec_always --no-startup-id xset r rate 200 60   # key repeat
+exec_always --no-startup-id xset s off           # disable screen saver
+exec_always --no-startup-id xset dpms 0 0 0
+exec_always --no-startup-id xset -dpms           # disable DPMS (energy saving)
+exec_always --no-startup-id xset s noblank       # no blanking
+exec_always --no-startup-id xrandr --output DP-0 --mode 3440x1440 --rate 143.97
 
 # wallpaper
 exec_always feh --bg-scale /home/olkozlo/Work/dracula/wallpapers/rox2fui0i6xd1.png
@@ -234,3 +235,4 @@ assign [class="kitty"] $ws1
 assign [class="Brave-browser"] $ws2
 assign [class="dlt-viewer"] $ws3
 assign [class="vlc"] $ws4
+assign [class="mpv"] $ws4

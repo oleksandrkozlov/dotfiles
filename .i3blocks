@@ -29,16 +29,22 @@ command=$SCRIPT_DIR/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-# Weatehr
+# Weather
 
 [weather]
 command=curl -Ss 'wttr.in/berlin?format=%c%C+%t+(%f)+%w+%m+%S-%s' | xargs echo
 interval=600
 
-#[weather]
-#command=curl -Ss 'wttr.in/berlin?format=%c%C+%t+(%f)%m'
-#interval=3600
-#color=#A4C2F4
+# Disk usage
+#
+# The directory defaults to $HOME if the instance is not specified.
+# The script may be called with a optional argument to set the alert
+# (defaults to 10 for 10%).
+[disk]
+label= 
+DIR=/
+interval=30
+command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 
 # Memory usage
 #
@@ -72,17 +78,6 @@ COLOR_CRIT=#ff5555
 [load_average]
 label=LOAD
 interval=10
-
-# Disk usage
-#
-# The directory defaults to $HOME if the instance is not specified.
-# The script may be called with a optional argument to set the alert
-# (defaults to 10 for 10%).
-[disk]
-label= 
-DIR=/
-interval=30
-command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 
 # Network interface monitoring
 #
